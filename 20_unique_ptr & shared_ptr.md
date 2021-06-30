@@ -119,7 +119,7 @@ std::shared_ptr<A> p1(new A());
 std::shared_ptr<A> p2 = p1;
 auto p3 = std::make_shared<A>(p1);
 
-std::cout << p1.use_count();  // 해당 객체를 참조하고 있는 shared_ptr의 ㄱ
+std::cout << p1.use_count();  // 해당 객체를 참조하고 있는 shared_ptr의 개수를 출력합니다.
 std::cout << p2.use_count();  // 3
 ```
 
