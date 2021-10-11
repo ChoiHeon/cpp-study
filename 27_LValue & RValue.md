@@ -77,6 +77,46 @@
   void g(int&& a) { cout << "int&&" << endl; }
   ```
 
+
+
+
+### 주의
+
+```c++
+int&& func() {
+    return 100;
+}
+
+void add(int&& x) {
+    int a = 1;
+    a = a + x;
+    cout << a << endl;
+}
+
+int main() {
+    add(func());  // expected output: 101
+    
+    return 0;
+}
+```
+
+```c++
+// output
+-858993459
+```
+
+* RValue Ref 매개변수에 RValue Ref를 인자로 넣으면 의도치 않은 결과가 발생
+
+* `func()`이 반환한 `int&&`를 RValue인 `int&&`에 바인딩할 수 없기 때문
+
+* 따라서 다음처럼 변경해야 함
+
+  ```c++
+  void add(int x) {
+      // 생략
+  }
+  ```
+
   
 
 
